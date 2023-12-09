@@ -1,0 +1,7 @@
+super: false
+groups:
+  - editors
+roles:
+  - editor
+id: 062ea0c0-4d02-4f1f-8a90-643179c49060
+password_hash: $2y$10$iSSwrZSuIBXAsUYOkW/ULulV18PcWKzMZP.j4MnfjrJRjIbj1OkAK
