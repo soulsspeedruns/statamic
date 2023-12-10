@@ -11,7 +11,7 @@ const Hello = ({ page, navigation }) => {
                 <Sidebar items={navigation} />
             </aside>
             <div className="col-span-10 grid grid-cols-10">
-                <article className="prose dark:prose-invert max-w-none prose-li:m-0 col-span-8">
+                <article className="prose dark:prose-invert max-w-none col-span-8">
                     {content}
                 </article>
                 <aside className="col-span-2">

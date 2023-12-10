@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Statamic\Facades\Entry;
+use Statamic\Statamic;
 
 Route::post('/theme', function (Request $request) {
     $validated = $request->validate([
@@ -34,7 +35,7 @@ Route::fallback(function (Request $request) {
     $navigation = collect(Statamic::tag('nav:collection:pages'))
         ->map(fn ($page) => mapper($page));
 
-    return Inertia::render('hello', [
+    return Inertia::render('index', [
         'page' => [
             'title' => $page['title'],
             'content' => $page['content'],
