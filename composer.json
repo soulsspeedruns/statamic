@@ -62,6 +62,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "generate": [
+            "@php artisan ziggy:generate",
+            "@php artisan ziggy:generate --types"
+        ],
         "pre-update-cmd": [
             "Statamic\\Console\\Composer\\Scripts::preUpdateCmd"
         ],
