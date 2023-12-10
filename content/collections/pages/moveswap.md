@@ -4,7 +4,7 @@ blueprint: page
 title: Moveswap
 author: 1385855d-4437-4c74-8ee9-f1d5daa97a06
 updated_by: 062ea0c0-4d02-4f1f-8a90-643179c49060
-updated_at: 1702176303
+updated_at: 1702200631
 ---
 Moveswap is a glitch!
 
@@ -14,6 +14,6 @@ I changed the moveswap page! from forge
 
 lmao
 
-hey
+heytest
 
 ## Hey
