@@ -1,4 +1,4 @@
-super: false
+super: true
 groups:
   - editors
 roles:
