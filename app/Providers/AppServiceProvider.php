@@ -2,8 +2,14 @@
 
 namespace App\Providers;
 
+use App\CommonMark\LinkRenderer;
 use Illuminate\Support\ServiceProvider;
-use Statamic\Statamic;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
+use League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension;
+use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
+use Statamic\Facades\Markdown;
+use Statamic\Markdown\Parser;
+use Ueberdosis\CommonMark\HintExtension;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,9 +26,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Statamic::vite('app', [
-        //     'resources/js/cp.js',
-        //     'resources/css/cp.css',
-        // ]);
+        Markdown::addExtensions(function () {
+            return [new HintExtension, new DefaultAttributesExtension, new ExternalLinkExtension];
+        });
+
+        /**/
+        /* Markdown::extend('default', function (Parser $parser) { */
+        /*     $parser->environment()->addRenderer(Link::class, new LinkRenderer); */
+        /**/
+        /*     return $parser; */
+        /* }); */
+
     }
 }

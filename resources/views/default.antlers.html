@@ -1,1 +1,18 @@
-{{ content }}
+<main class="container max-w-[1200px] mx-auto px-4 py-8">
+    <ul class="mb-4">
+        {{ partial:components.breadcrumbs }}
+    </ul>
+    <h1 class="text-4xl font-bold">{{ title }}</h1>
+    <div class="grid grid-cols-12 gap-4">
+        <div class="prose max-w-none [&_.table-of-contents]:hidden col-span-9">
+            {{ content }}
+        </div>
+        <aside class="col-span-3 hidden lg:block">
+            <p class="font-bold">On This Page</p>
+            <div
+                class="overflow-hidden [&>:not(.table-of-contents)]:hidden [&>ul>li>ul]:ml-4 [&_li]:whitespace-nowrap [&_li]:overflow-ellipsis sticky top-16">
+                {{ content }}
+            </div>
+        </aside>
+    </div>
+</main>

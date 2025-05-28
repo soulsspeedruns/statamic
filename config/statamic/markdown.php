@@ -1,5 +1,7 @@
 <?php
 
+use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
+
 return [
 
     /*
@@ -18,9 +20,22 @@ return [
     'configs' => [
 
         'default' => [
-            // 'heading_permalink' => [
-            //     'symbol' => '#',
-            // ],
+            'heading_permalink' => [
+                'symbol' => '#',
+            ],
+            'default_attributes' => [
+                Link::class => [
+                    'wire:navigate' => '',
+                ],
+            ],
+            'external_link' => [
+                'internal_hosts' => config('app.url'),
+                'open_in_new_window' => true,
+                'html_class' => 'external-link',
+                'nofollow' => '',
+                'noopener' => 'external',
+                'noreferrer' => 'external',
+            ],
         ],
 
     ],

@@ -6,7 +6,10 @@
 /public/vendor/statamic
 /storage/*.key
 /storage/pail
+/storage/website
 /vendor
+.phpstorm.meta.php
+_ide_helper.php
 .env
 .env.backup
 .env.production

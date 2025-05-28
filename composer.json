@@ -13,12 +13,17 @@
         "php": "^8.2",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
+        "livewire/flux": "^2.1",
+        "livewire/livewire": "^3.6",
         "spatie/fork": "^1.2",
+        "spatie/laravel-data": "*",
         "statamic/cms": "^5.0",
-        "statamic/ssg": "^3.1"
+        "statamic/ssg": "^3.1",
+        "ueberdosis/commonmark-hint-extension": "^0.1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8.1",
+        "barryvdh/laravel-ide-helper": "^3.5",
         "fakerphp/faker": "^1.23",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.13",
@@ -57,7 +62,9 @@
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\""
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
