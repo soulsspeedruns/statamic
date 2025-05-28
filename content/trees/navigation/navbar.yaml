@@ -7,3 +7,7 @@ tree:
     id: 47947b66-d75a-4492-9541-a75b66b8c68c
     title: Leaderboards
     url: /leaderboards
+  -
+    id: 41abd020-f4af-4483-b81d-f02e335a8656
+    title: Team
+    url: /team
