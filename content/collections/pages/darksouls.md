@@ -1,10 +1,10 @@
 ---
 id: 8a46140f-fec7-4694-b387-947df1e164cb
 blueprint: page
-title: 'Dark Souls wesh'
+title: 'Dark Souls'
 author: bf654177-2ea8-47c3-ab40-5300eee7389e
 updated_by: bf654177-2ea8-47c3-ab40-5300eee7389e
-updated_at: 1748441128
+updated_at: 1748441337
 ---
 **Dark Souls** is a 3D Action RPG developed by FromSoftware Inc. and was released in late 2011. A DLC named **Artorias of the Abyss** was released in mid 2012, which is included in the PC version. The game is available for PC, Playstation 3 and Xbox 360. It is also playable on Xbox One via Backwards Compatibility.
 
