@@ -2,9 +2,13 @@
 id: 76af104f-83ce-49b2-b0fa-aafbf38d1325
 blueprint: page
 title: 'Getting Started'
-parent: 8a46140f-fec7-4694-b387-947df1e164cb
+author: bf654177-2ea8-47c3-ab40-5300eee7389e
+updated_by: bf654177-2ea8-47c3-ab40-5300eee7389e
+updated_at: 1748467601
 ---
-This page is meant for people trying to get into [**Dark Souls**](/darksouls) speedrunning.
+This page is meant for people trying to get into [**Dark Souls**](/darksouls) speedrunning
+
+This is a change
 
 ## General
 
