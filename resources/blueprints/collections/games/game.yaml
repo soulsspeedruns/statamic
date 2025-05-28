@@ -1,0 +1,66 @@
+title: Game
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: hidden
+              required: false
+          -
+            handle: name
+            field:
+              type: text
+              display: Name
+              validate:
+                - required
+          -
+            handle: speedrun_com_id
+            field:
+              type: text
+              display: 'Speedrun.com ID'
+              instructions: "The unique identifier of the related speedrun.com's game."
+              validate:
+                - required
+          -
+            handle: background
+            field:
+              max_files: 1
+              min_files: 1
+              container: assets
+              type: assets
+              display: Background
+          -
+            handle: page
+            field:
+              max_items: 1
+              collections:
+                - pages
+              type: entries
+              display: "Game's page"
+              instructions: 'The wiki page for this game.'
+              validate:
+                - required
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - games
+              max_items: 1
+              listable: false
+              localizable: true

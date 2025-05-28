@@ -1,0 +1,9 @@
+tree:
+  -
+    id: ace0063a-5590-44d9-b581-8de7dcb6dddb
+    title: Home
+    url: /
+  -
+    id: 47947b66-d75a-4492-9541-a75b66b8c68c
+    title: Leaderboards
+    url: /leaderboards

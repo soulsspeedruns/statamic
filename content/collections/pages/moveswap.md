@@ -1,0 +1,86 @@
+---
+id: 096ff309-2045-4f68-a137-82cadb67684b
+blueprint: page
+title: Moveswap
+parent: 8a46140f-fec7-4694-b387-947df1e164cb
+---
+**Moveswap** is a glitch in [Dark Souls](/darksouls) and was discovered in August 2013. It allows the player to transfer the running, rolling and plunging attack from one weapon to another and is commonly used in speedruns since it can double the damage output when used correctly. It works on all patch versions of the game.
+
+In September 2024 methods to moveswap have been found that also work in Dark Souls Remastered. They are somewhat slower and less viable, and thus moveswap does not find as much use there as it does in the original game.
+
+## Procedure
+
+The glitch fundamentally makes use of two of the game's mechanics:
+
+- No weapon other than a bow can normally be two-handed in the left hand.
+- Performing an action (e.g. using an item, two-handing a weapon) during an animation causes this action to be queued up and executed only after the animation is over.
+
+To perform moveswap, start an animation (usually rolling), queue up the two-handing of a bow in the left hand (while performing that animation) and then switch out the bow for another weapon so that this newly equipped weapon is two-handed in the left hand instead of the bow. Since this is normally not possible and a bow normally does not have a running and/or rolling attack, the game retrieves this information from your right hand weapon instead. So when you now use either of these attacks, you will get the attacks of your right hand weapon but still have the damage of your left hand weapon.
+
+## Inner Workings
+
+The reason why moveswap works is a) due to action queueing that allows you to queue up actions in advance and b) due to the fact that the two-hand state is not applied immediately at the start of the two-hand animation.
+
+When queueing up an action in advance during another action, the queued action will be executed afterwards based on whatever equipment you have at the time of execution. Normally this should mean that if you queue up an L1/LB action with a bow and then switch to another weapon, the bow two-handing should no longer be executed and instead the L1/LB action of the new weapon should be used (usually an attack).
+
+And this is what happens if you equip the new weapon too fast before the bow two-handing action actually begins: you attack instead. On the flip-side, if you equip the new weapon too late, the bow two-handing will be undone (or the game will block you from accessing the equipment slot with the bow if the two-handing currently happens).
+
+In order to successfully perform moveswap then, you must hit the window in between. You need to access the equipment slot before the bow two-handing animation starts so that the game still allows you to access the slot, and afterwards switch out the bow before the two-hand state is applied. For bow two-handing, this happens 4 frames into the animation. Therefore, in order to successfully perform moveswap, you have to hit this 4 frame window with your weapon equip.
+
+This holds true no matter your equip load or anything else you have equipped. A higher equip load and thus a slower roll merely gives you more time to prepare the menu in advance to hit the correct 4 frame window. But it also makes it easier to equip the weapon too fast. Speedrunners have to therefore adjust their moveswap speed or rhythm during a run depending on the equip load / roll speed for any given moveswap.
+
+## Button Sequences for Moveswapping
+
+#### **If the weapon you want to moveswap is**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ***above***                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                **the bow in your weapon list:**
+
+**Xbox:**  B  LB  Start  RB/Right  A  Down  A  Up  A
+
+**PS3:**  Circle  L1  Start  R1/Right  X  Down  X  Up  X
+
+#### **If the weapon you want to moveswap is**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ***below***                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                **the bow in your weapon list:**
+
+**Xbox:**  B  LB  Start  RB/Right  A  Down  A  Down  A
+
+**PS3:**  Circle  L1  Start  R1/Right  X  Down  X  Down  X
+
+## Common Mistakes
+
+- **"I cannot go into the equipment menu!"**: Dark Souls inherently has a menu delay, meaning after opening the menu (pressing 'Start') there is a short window (5 frames) where you cannot do anything yet. It takes some time to get used to.
+- **"I can't switch out the bow for another weapon!"**: If you cannot switch out the bow you're too slow. It means that the bow two-handing animation is already being executed and the game does not allow switching weapons during the animation.
+- **"After switching out the bow the weapon is not two-handed!"**: That means you are either pressing LB/L1 too early which causes the two-handing-action to not be queued up, or you equip the weapon too late and undo the bow two-hand after it was begun/performed.
+- **"After switching out the bow I attack with my left hand weapon instead of two-handing it!"**: If this happens, you actually equip the weapon too fast. The reason is, you queue up the L1/LB action but switch the weapon out so fast that the bow L1/LB isn't used any more and instead the attack of the new weapon is used. More detailed explanation in [Inner Workings](/darksouls/moveswap#inner-workings) above.
+
+## Tips & Tricks
+
+- Moveswapping does not work while being out of stamina as any action in the game requires you to have more than 0 stamina in order to execute it. Make sure to have at least a little bit more stamina available than you need to perform the animation (e.g. roll) you use for moveswapping.
+- Make sure you understand when you can press L1/LB the earliest during your animation of choice (roll, jump, ...) to give yourself the most amount of time for the menuing while still successfully queueing up the two-hand animation.
+- Press 'Start' on the same frame or at least right after pressing L1/LB to give yourself the most time for menuing. Make sure to not press 'Start' a frame too early however, otherwise the L1/LB will no longer be queued up at all.
+- The inputs overall have to happen pretty fast if you're using the usually used jump animation, but as explained in [Inner Workings](/darksouls/moveswap#inner-workings) you can actually be too fast. Once you're used to performing the inputs, it's primarily about having the right rhythm more than anything.
+
+## Miscellaneous
+
+- As mentioned above, only the running (also used out of a backstep), rolling or plunging attacks are replaced.
+- For damage calculation the game only uses the stats from the weapon that you attack with, including counter hit information and other damage modifiers.
+- The game also uses the relevant hitboxes from the weapon you attack with for the given animation. Therefore, an animation with multiple hits like the thrusting sword running attacks will still hit multiple times with a different weapon. The pike has a triple hit technically, but its third hit uses a different hitbox from the first two, with other weapons usually not having a hitbox with the corresponding ID. Shields do have a push hitbox associated with it, so shields moveswapped with a pike will push enemies on the third hit without dealing damage. ([Pike hitbox demo](https://www.youtube.com/watch?v=slZu_hznwhs))
+
+## Animations to moveswap from
+
+- Any roll ([DWGR](//youtu.be/uWF5BKEBrJo?t=10s), [fast](//www.youtube.com/watch?v=i3WpudDJbYc), medium, slow; [after a jump](//www.twitch.tv/namu_sh/c/2790013))
+- [Gestures](//www.youtube.com/watch?v=-P66baqCzSY)
+- Pulling a lever
+- [Standing up from a ladder](//www.youtube.com/watch?v=uL0Tl6YUcCU)
+- [Stagger after a fall](//youtu.be/uWF5BKEBrJo?t=1m12s)
+- Backstep (DGWR, fast, [medium](//youtu.be/uWF5BKEBrJo?t=51s), slow)
+- [Stagger](//youtu.be/uWF5BKEBrJo?t=1m27s)
+- [Head Scratching](//youtu.be/uWF5BKEBrJo?t=1m42s)
+- [Door Opening/Closing](//youtu.be/uWF5BKEBrJo?t=1m59s)
+
+## External Resources
+
+- [Tutorial](www.youtube.com/watch?v=T4RYg4njWZg) by Mr Brood on YouTube
+
+www.youtube.com/watch?v=T4RYg4njWZg
+
+- [Easier Beginner Friendly Moveswap Tutorial](//www.youtube.com/watch?v=MjHIuFhl_oc) by Regole on YouTube
+- [Tutorial](//www.youtube.com/watch?v=XZ1eogPKKH0) by UberGusMage on YouTube
+- [Non-Semi-Permanent Moveswap Tutorial](//www.youtube.com/watch?v=HZmgywe4N3s) by Paddy Blank on YouTube
