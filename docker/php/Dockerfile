@@ -39,7 +39,7 @@ RUN docker-php-ext-install \
     zip
 
 # Copy the entire app
-COPY .git . .
+COPY ./.git/ . .
 
 # Install composer dependencies
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
