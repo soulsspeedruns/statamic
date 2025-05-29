@@ -5,4 +5,5 @@ name: 'Dark Souls II: Scholar of the First Sin'
 speedrun_com_id: ds2sotfs
 background: games/ds2sotfs.jpg
 title: 'Dark Souls II: Scholar of the First Sin'
+page: 5d07a6d1-efe7-4ff6-83f5-9a203715e1f2
 ---
