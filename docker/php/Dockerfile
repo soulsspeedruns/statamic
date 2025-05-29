@@ -39,8 +39,7 @@ RUN docker-php-ext-install \
     zip
 
 # Copy the entire app
-COPY . .
-COPY .git/ .git/
+COPY .git . .
 
 # Install composer dependencies
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
@@ -69,8 +68,7 @@ COPY --from=builder /usr/local/bin/docker-php-ext-* /usr/local/bin/
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 # Copy the application code and dependencies from the build stage
-COPY --from=builder /var/www/html /var/www/html
-COPY --from=builder /var/www/html/.git /var/www/html/.git
+COPY --from=builder /var/www/html /var/www/html/.git /var/www/html
 
 # Ensure correct permissions
 RUN chown -R www-data:www-data /var/www/html
