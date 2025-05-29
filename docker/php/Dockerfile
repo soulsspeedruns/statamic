@@ -50,7 +50,8 @@ RUN apt-get update -y && apt-get install -y \
 # Install PHP extensions
 RUN docker-php-ext-install \
     pcntl \
-    sockets
+    sockets \
+    zip
 
 # Set up artisan stuff
 RUN touch .env
