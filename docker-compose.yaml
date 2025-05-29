@@ -1,10 +1,17 @@
 ---
 services:
+  nginx:
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    ports: [80:80]
+    volumes: [www:/var/www/html]
+    depends_on: [php]
   php:
     build:
       context: ./docker/php
       dockerfile: Dockerfile
-    ports: [80:80]
+    volumes: [www:/var/www/html]
     environment:
       - DB_CONNECT=pgsql
       - DB_HOST=db
@@ -69,3 +76,4 @@ services:
     volumes: [db:/var/lib/postgresql/data]
 volumes:
   db:
+  www:

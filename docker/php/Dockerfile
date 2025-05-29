@@ -65,12 +65,8 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 # Start the app
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-# Setup and run frankenphp
-RUN curl https://frankenphp.dev/install.sh | sh
-RUN mv frankenphp /usr/local/bin/
-
-# https://frankenphp.dev/docs/config/#docker
+# Setup production php
 RUN cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 
-WORKDIR /var/www/html/public
-CMD ["frankenphp", "php-server"]
+EXPOSE 9000
+CMD ["php-fpm"]
