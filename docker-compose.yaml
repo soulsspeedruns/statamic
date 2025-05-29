@@ -7,29 +7,18 @@ services:
     ports: ['${NGINX_PORT:-1234}:80']
     volumes: [build:/var/www/html/public/build]
     networks: [laravel]
-    # depends_on:
-    #   php:
-    #     condition: service_healthy
   php:
     build:
       context: .
       dockerfile: ./docker/php/Dockerfile
     volumes: [build:/var/www/html/public/build]
     networks: [laravel]
-    # healthcheck:
-    #   test: [CMD, php, -r, echo 'PHP is running';]
-    #   interval: 30s
-    #   timeout: 10s
-    #   retries: 5
-    # depends_on:
-    #   db:
-    #     condition: service_healthy
     environment:
-      - DB_CONNECT=pgsql
-      - DB_HOST=db
-      - DB_PORT=5432
-      - DB_USER=postgres
-      - DB_PASSWORD=example
+      - DB_CONNECT=${DB_CONNECT}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
       - APP_NAME=${APP_NAME}
       - APP_ENV=${APP_ENV}
       - APP_KEY=${APP_KEY}
@@ -87,11 +76,6 @@ services:
     environment: [POSTGRES_USER=postgres, POSTGRES_PASSWORD=example]
     volumes: [db:/var/lib/postgresql/data]
     networks: [laravel]
-    # healthcheck:
-    #   test: [CMD, pg_isready]
-    #   interval: 10s
-    #   timeout: 5s
-    #   retries: 5
 networks:
   laravel:
 volumes:
