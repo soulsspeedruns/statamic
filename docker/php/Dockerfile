@@ -41,7 +41,7 @@ RUN docker-php-ext-install \
 # Copy the entire app
 COPY . .
 # also copy the .git directory to preserve git history
-COPY .git /var/www/html/.git
+COPY ./.git /var/www/html/.git
 
 # Install composer dependencies
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
