@@ -9,5 +9,8 @@ php artisan storage:link
 # Generate application key (--force is needed in production to bypass the confirmation)
 php artisan key:generate --force
 
+# Run database migrations
+php artisan migrate --force
+
 # Execute the specified command in the Dockerfile (CMD ["command"])
 exec "$@"

@@ -1,10 +1,31 @@
-# https://hub.docker.com/_/node/
-FROM node:24 as node
+FROM php:8.4-cli AS vendor
 
+# Set the working directory
 WORKDIR /app
+
+RUN apt-get update -y && apt-get install -y \
+    git
+
+# Install PHP extensions
+RUN docker-php-ext-install \
+    pcntl \
+    sockets
 
 # Clone the repository
 RUN git clone https://github.com/soulsspeedruns/statamic.git .
+
+# Install composer dependencies
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+RUN composer install --no-dev --optimize-autoloader
+
+# https://hub.docker.com/_/node/
+FROM node:24 AS node
+
+# Set the working directory
+WORKDIR /app
+
+# Clone the repository
+COPY --from=vendor /app /app
 
 # Install npm dependencies and build
 RUN npm install
@@ -23,6 +44,7 @@ RUN apt-get update -y && apt-get install -y \
     git \
     zip \
     unzip \
+    unzip \
     supervisor
 
 # Install PHP extensions
@@ -30,14 +52,8 @@ RUN docker-php-ext-install \
     pcntl \
     sockets
 
-# Copy composer from official image
-COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
-
-# Install composer dependencies
-RUN composer install
-
 # Set up artisan stuff
-RUN cp .env.example .env
+RUN touch .env
 RUN php artisan key:generate
 
 # Copy the entrypoint file to the working directory
@@ -52,6 +68,9 @@ ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 # Setup and run frankenphp
 RUN curl https://frankenphp.dev/install.sh | sh
 RUN mv frankenphp /usr/local/bin/
+
+# https://frankenphp.dev/docs/config/#docker
+RUN cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 
 WORKDIR /var/www/html/public
 CMD ["frankenphp", "php-server"]
