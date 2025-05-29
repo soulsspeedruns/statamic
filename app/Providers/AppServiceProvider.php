@@ -30,9 +30,9 @@ class AppServiceProvider extends ServiceProvider
             return [new HintExtension, new DefaultAttributesExtension, new ExternalLinkExtension];
         });
 
-        /**/
+        /* Wait and see if this is merged https://github.com/statamic/cms/pull/11827 */
         /* Markdown::extend('default', function (Parser $parser) { */
-        /*     $parser->environment()->addRenderer(Link::class, new LinkRenderer); */
+        /*     $parser->addRenderer(Link::class, new LinkRenderer); */
         /**/
         /*     return $parser; */
         /* }); */

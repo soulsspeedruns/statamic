@@ -1,1 +1,2 @@
-<a href="{{ $url }}" title="{{ $title }}" data-custom class="bg-red-500">{{ $text }}</a>
+<flux:link href="{{ $url }}" title="{{ $title }}" wire:navigate>{!! $text !!}</flux:link>
+

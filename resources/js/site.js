@@ -9,3 +9,4 @@ document.addEventListener('livewire:navigate', (event) => {
         window.location.assign(to);
     }
 })
+
