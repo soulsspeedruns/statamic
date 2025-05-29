@@ -5,6 +5,7 @@ WORKDIR /app
 
 RUN apt-get update -y && apt-get install -y \
     git \
+    libcurl4-openssl-dev \
     libzip-dev \
     zip
 
@@ -12,6 +13,7 @@ RUN apt-get update -y && apt-get install -y \
 RUN docker-php-ext-install \
     sockets \
     pcntl \
+    curl \
     zip
 
 # Clone the repository
@@ -44,6 +46,7 @@ WORKDIR /var/www/html
 # Basic updates
 RUN apt-get update -y && apt-get install -y \
     git \
+    libcurl4-openssl-dev \
     libzip-dev \
     zip
 
@@ -51,6 +54,7 @@ RUN apt-get update -y && apt-get install -y \
 RUN docker-php-ext-install \
     sockets \
     pcntl \
+    curl \
     zip
 
 # Set up artisan stuff
