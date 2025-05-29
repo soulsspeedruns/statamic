@@ -5,4 +5,5 @@ name: "Demon's Souls (2020)"
 speedrun_com_id: desremake
 background: games/desremake.jpg
 title: "Demon's Souls (2020)"
+page: bcdefc1d-26f3-4277-a301-787a130b8231
 ---
