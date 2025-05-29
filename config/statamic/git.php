@@ -78,8 +78,8 @@ return [
     'use_authenticated' => true,
 
     'user' => [
-        'name' => env('STATAMIC_GIT_USER_NAME', 'CapitaineToinon'),
-        'email' => env('STATAMIC_GIT_USER_EMAIL', 'capitainetoinon@proton.com'),
+        'name' => env('STATAMIC_GIT_USER_NAME', 'bot'),
+        'email' => env('STATAMIC_GIT_USER_EMAIL', 'bot@soulsspeedruns.com'),
     ],
 
     /*
@@ -134,7 +134,7 @@ return [
 
     'commands' => [
         '{{ git }} add {{ paths }}',
-        '{{ git }} -c "user.name={{ name }}" -c "user.email={{ email }}" commit -m "{{ message }}"',
+        '{{ git }} -c "user.name={{ name }}" -c "user.email={{ email }}" commit -m "[BOT] {{ message }}"',
     ],
 
     /*

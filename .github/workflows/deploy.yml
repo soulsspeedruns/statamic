@@ -1,0 +1,19 @@
+---
+name: Deploy
+on:
+  push:
+    branches: [main]
+jobs:
+  post_if_not_bot_message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Get latest commit message
+        id: get_message
+        run: echo "message=$(git log -1 --pretty=format:'%s')" >> $GITHUB_OUTPUT
+      - name: Post to URL if message does NOT start with [BOT]
+        if: ${{ !startsWith(steps.get_message.outputs.message, '[BOT]') }}
+        run: |-
+          curl ${{ secrets.DEPLOY_URL }}?uuid=${{ secrets.DEPLOY_UUID }}&force=false \
+            --header 'Authorization: Bearer ${{ secrets.DEPLOY_TOKEN }}'
