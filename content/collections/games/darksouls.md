@@ -5,4 +5,5 @@ name: 'Dark Souls'
 speedrun_com_id: darksouls
 background: games/darksouls.jpg
 title: 'Dark Souls'
+page: 31cc3809-6887-4ab1-8f4a-26b7b3dbdb59
 ---
