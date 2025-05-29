@@ -6,13 +6,11 @@ services:
       dockerfile: Dockerfile
     ports: [80:80]
       environment:
-        # hard coded environment variables
         - DB_CONNECT=pgsql
         - DB_HOST=db
         - DB_PORT=5432
         - DB_USER=postgres
         - DB_PASSWORD=example
-        # Passthrough environment variables
         - APP_NAME=${APP_NAME}
         - APP_ENV=${APP_ENV}
         - APP_KEY=${APP_KEY}
