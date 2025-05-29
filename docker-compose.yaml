@@ -73,7 +73,7 @@ services:
       - DEBUGBAR_ENABLED=${DEBUGBAR_ENABLED}
   db:
     image: postgres:latest
-    environment: [POSTGRES_USER=postgres, POSTGRES_PASSWORD=example]
+    environment: [POSTGRES_USER=${DB_USER}, POSTGRES_PASSWORD=${DB_PASSWORD}]
     volumes: [db:/var/lib/postgresql/data]
     networks: [laravel]
 networks:
