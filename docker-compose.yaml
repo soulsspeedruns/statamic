@@ -2,15 +2,15 @@
 services:
   nginx:
     build:
-      context: ./docker/nginx
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
     ports: [1234:80]
     volumes: [www:/var/www/html]
     depends_on: [php]
   php:
     build:
-      context: ./docker/php
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./docker/php/Dockerfile
     volumes: [www:/var/www/html]
     environment:
       - DB_CONNECT=pgsql

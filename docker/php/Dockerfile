@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1-labs
 FROM php:8.4-cli AS vendor
 
 # Set the working directory
@@ -17,7 +18,8 @@ RUN docker-php-ext-install \
     zip
 
 # Clone the repository
-RUN git clone https://github.com/soulsspeedruns/statamic.git .
+# RUN git clone https://github.com/soulsspeedruns/statamic.git .
+COPY . .
 
 # Install composer dependencies
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
@@ -62,7 +64,7 @@ RUN touch .env
 RUN php artisan key:generate
 
 # Copy the entrypoint file to the working directory
-COPY ./entrypoint.sh /usr/local/bin/
+COPY ./docker/php/entrypoint.sh /usr/local/bin/
 
 # Make the file executable
 RUN chmod +x /usr/local/bin/entrypoint.sh
