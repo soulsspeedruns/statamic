@@ -2,8 +2,13 @@
 id: 2c658d5e-b295-471e-b96a-7cc15abbc9f1
 blueprint: page
 title: Bloodborne
+author: 1
+updated_by: 1
+updated_at: 1748550007
 ---
 **Bloodborne** is a 3D Action RPG developed by FromSoftware Inc. with gameplay/setting comparable to Dark/Demon's Souls. It was released in March 2015 exclusively for the Playstation 4. A DLC named **The Old Hunters** was released in November 2015, bosses included are mandatory for All Bosses runs. Leaderboards for Bloodborne can be found [here](https://www.speedrun.com/bloodborne).
+
+test
 
 ## Leaderboards & Categories
 
