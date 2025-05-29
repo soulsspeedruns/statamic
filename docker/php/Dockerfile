@@ -4,12 +4,15 @@ FROM php:8.4-cli AS vendor
 WORKDIR /app
 
 RUN apt-get update -y && apt-get install -y \
-    git
+    git \
+    libzip-dev \
+    zip
 
 # Install PHP extensions
 RUN docker-php-ext-install \
+    sockets \
     pcntl \
-    sockets
+    zip
 
 # Clone the repository
 RUN git clone https://github.com/soulsspeedruns/statamic.git .
@@ -40,17 +43,14 @@ WORKDIR /var/www/html
 
 # Basic updates
 RUN apt-get update -y && apt-get install -y \
-    curl \
     git \
-    zip \
-    unzip \
-    unzip \
-    supervisor
+    libzip-dev \
+    zip
 
 # Install PHP extensions
 RUN docker-php-ext-install \
-    pcntl \
     sockets \
+    pcntl \
     zip
 
 # Set up artisan stuff
