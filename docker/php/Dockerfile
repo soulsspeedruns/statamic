@@ -72,8 +72,15 @@ COPY --from=builder /var/www/html /var/www/html
 # Ensure correct permissions
 RUN chown -R www-data:www-data /var/www
 
+# Copy the initialization script
+COPY ./docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 # Switch to the non-privileged user to run the application
 USER www-data
+
+# Change the default command to run the entrypoint script
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 # start the PHP FastCGI Process Manager
 EXPOSE 9000

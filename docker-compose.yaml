@@ -14,10 +14,10 @@ services:
     volumes: [build:/var/www/html/public/build]
     networks: [laravel]
     environment:
-      - DB_CONNECT=${DB_CONNECT}
+      - DB_CONNECTION=${DB_CONNECTION}
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
-      - DB_USER=${DB_USER}
+      - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
       - APP_NAME=${APP_NAME}
       - APP_ENV=${APP_ENV}
@@ -73,7 +73,9 @@ services:
       - DEBUGBAR_ENABLED=${DEBUGBAR_ENABLED}
   db:
     image: postgres:latest
-    environment: [POSTGRES_USER=${DB_USER}, POSTGRES_PASSWORD=${DB_PASSWORD}]
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     volumes: [db:/var/lib/postgresql/data]
     networks: [laravel]
 networks:

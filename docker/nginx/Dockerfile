@@ -3,7 +3,7 @@
 # need the vendor files to be present for the build process.
 # This is caused by the use of the Flux UI library which has
 # tailwind classes in the PHP files.
-FROM php:8.4-fpm as php
+FROM php:8.4-fpm AS php
 
 # Install system dependencies and PHP extensions for Laravel with MySQL/PostgreSQL support.
 # Dependencies in this stage are only required for building the final image.
