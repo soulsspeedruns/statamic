@@ -15,5 +15,4 @@ jobs:
       - name: Post to URL if message does NOT start with [BOT]
         if: ${{ !startsWith(steps.get_message.outputs.message, '[BOT]') }}
         run: |-
-          curl ${{ secrets.DEPLOY_URL }}?uuid=${{ secrets.DEPLOY_UUID }}&force=false \
-            --header 'Authorization: Bearer ${{ secrets.DEPLOY_TOKEN }}'
+          curl ${{ secrets.DEPLOY_URL }}?uuid=${{ secrets.DEPLOY_UUID }}&force=false --header 'Authorization: Bearer ${{ secrets.DEPLOY_TOKEN }}'
