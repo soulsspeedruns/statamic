@@ -52,7 +52,6 @@ class StatamicAuthTables extends Migration
 
         Schema::dropIfExists('role_user');
         Schema::dropIfExists('group_user');
-
         Schema::dropIfExists('password_activation_tokens');
     }
 }

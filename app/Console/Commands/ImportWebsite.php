@@ -78,10 +78,6 @@ class ImportWebsite extends Command
                 foreach (Entry::all() as $entry) {
                     $entry->delete();
                 }
-                /* Game::truncate(); */
-                /* Page::truncate(); */
-                /* PageSection::removeAllFromSearch(); */
-                /* PageSection::truncate(); */
             },
             message: 'Deleting all pages and games'
         );
