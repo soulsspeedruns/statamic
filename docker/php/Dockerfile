@@ -1,14 +1,35 @@
 # syntax=docker/dockerfile:1-labs
-FROM php:8.4-cli AS vendor
+# Start building first with the PHP dev image to install dependencies
+FROM php:8.4-cli AS builder
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /var/www/html
 
-RUN apt-get update -y && apt-get install -y \
-    git \
+# Install system dependencies and PHP extensions for Laravel with MySQL/PostgreSQL support.
+# Dependencies in this stage are only required for building the final image.
+# Node.js and asset building are handled in the Nginx stage, not here.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    unzip \
+    libpq-dev \
+    libonig-dev \
+    libssl-dev \
+    libxml2-dev \
     libcurl4-openssl-dev \
+    libicu-dev \
     libzip-dev \
-    zip
+    && docker-php-ext-install -j$(nproc) \
+    pdo_mysql \
+    pdo_pgsql \
+    pgsql \
+    opcache \
+    intl \
+    zip \
+    bcmath \
+    soap \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
+    && apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install PHP extensions
 RUN docker-php-ext-install \
@@ -17,63 +38,43 @@ RUN docker-php-ext-install \
     curl \
     zip
 
-# Clone the repository
-# RUN git clone https://github.com/soulsspeedruns/statamic.git .
+# Copy the entire app
 COPY . .
 
 # Install composer dependencies
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress --prefer-dist
 
-# https://hub.docker.com/_/node/
-FROM node:24 AS node
-
-# Set the working directory
-WORKDIR /app
-
-# Clone the repository
-COPY --from=vendor /app /app
-
-# Install npm dependencies and build
-RUN npm install
-RUN npm run build
-
-# https://hub.docker.com/_/php/
+# Finally perpare the final image
 FROM php:8.4-fpm
 
-# Move the files
-COPY --from=node /app /var/www/html
-WORKDIR /var/www/html
-
-# Basic updates
-RUN apt-get update -y && apt-get install -y \
-    git \
-    libcurl4-openssl-dev \
+# Install only runtime libraries needed in production
+# libfcgi-bin and procps are required for the php-fpm-healthcheck script
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libpq-dev \
+    libicu-dev \
     libzip-dev \
-    zip
+    libfcgi-bin \
+    procps \
+    && apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install PHP extensions
-RUN docker-php-ext-install \
-    sockets \
-    pcntl \
-    curl \
-    zip
+# Copy PHP extensions and libraries from the builder stage
+COPY --from=builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
+COPY --from=builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
+COPY --from=builder /usr/local/bin/docker-php-ext-* /usr/local/bin/
 
-# Set up artisan stuff
-RUN touch .env
-RUN php artisan key:generate
+# Use the recommanded PHP configuration
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
-# Copy the entrypoint file to the working directory
-COPY ./docker/php/entrypoint.sh /usr/local/bin/
+# Copy the application code and dependencies from the build stage
+COPY --from=builder /var/www/html /var/www/html
 
-# Make the file executable
-RUN chmod +x /usr/local/bin/entrypoint.sh
+# Ensure correct permissions
+RUN chown -R www-data:www-data /var/www
 
-# Start the app
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+# Switch to the non-privileged user to run the application
+USER www-data
 
-# Setup production php
-# RUN cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
-
+# start the PHP FastCGI Process Manager
 EXPOSE 9000
 CMD ["php-fpm"]

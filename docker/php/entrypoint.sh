@@ -1,16 +1,32 @@
 #!/bin/sh
+set -e
 
-# Set permissions
-chown -R www-data:www-data /var/www/html
+# Initialize storage directory if empty
+# -----------------------------------------------------------
+# If the storage directory is empty, copy the initial contents
+# and set the correct permissions.
+# -----------------------------------------------------------
+# if [ ! "$(ls -A /var/www/storage)" ]; then
+#   echo "Initializing storage directory..."
+#   cp -R /var/www/storage-init/. /var/www/storage
+#   chown -R www-data:www-data /var/www/storage
+# fi
 
-# Link storage and public folders
-php artisan storage:link
+# Remove storage-init directory
+rm -rf /var/www/html/storage-init
 
-# Generate application key (--force is needed in production to bypass the confirmation)
-php artisan key:generate --force
-
-# Run database migrations
+# Run Laravel migrations
+# -----------------------------------------------------------
+# Ensure the database schema is up to date.
+# -----------------------------------------------------------
 php artisan migrate --force
 
-# Execute the specified command in the Dockerfile (CMD ["command"])
+# Clear and cache configurations
+# -----------------------------------------------------------
+# Improves performance by caching config and routes.
+# -----------------------------------------------------------
+php artisan config:cache
+php artisan route:cache
+
+# Run the default command
 exec "$@"
