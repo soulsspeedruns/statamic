@@ -5,4 +5,5 @@ name: "Demon's Souls"
 speedrun_com_id: demonssouls
 background: games/demonssouls.jpg
 title: "Demon's Souls"
+page: fa5633ee-9a25-4302-b3c2-8534635a577f
 ---
