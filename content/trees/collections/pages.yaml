@@ -217,6 +217,9 @@ tree:
         entry: 9f71efea-585a-4059-abd0-685a4d6adbb4
   -
     entry: 966c9654-ab68-4864-a907-871e8b27df7c
+    children:
+      -
+        entry: d852f95e-fcf8-4e4d-aeb8-33a98747bfb1
   -
     entry: 2011d048-ab76-42de-9c5a-35a765c9cbdd
   -
