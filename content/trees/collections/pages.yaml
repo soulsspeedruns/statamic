@@ -250,6 +250,9 @@ tree:
         entry: c36e8844-361e-43bd-a337-3112dc3e661c
   -
     entry: 2011d048-ab76-42de-9c5a-35a765c9cbdd
+    children:
+      -
+        entry: a2477bef-c45d-42c9-a002-ac9c6cf3175a
   -
     entry: 92c8eb86-33bd-4606-896f-3a2908dde46e
   -
